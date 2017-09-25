@@ -1,0 +1,59 @@
+﻿@model SlackerRank_preAlpha.Models.CompilerModel
+<style>
+    textarea {
+        width: 900px;
+        height: 450px;
+    }
+    #testStyle {
+ 
+    width:900px;
+    height:450px;
+    
+    }
+</style>
+<h1>Compiler</h1>
+
+@Html.BeginForm("index", "Compiler", FormMethod.Post)   {
+<div class="col-md-6" id="testStyle">
+    <div class="row">
+        <div class="col-md-6"></div>
+    </div>
+
+    <div class="row">
+        <p></p>
+    </div>
+
+    <div class="row">
+        
+        @{try
+            {
+                
+        <div class="col-md-2"> @Html.DisplayFor(model => model.outputCode)</div>
+                
+            }
+            catch
+            {
+                <div class="col-md-2"> @Html.DisplayText("...")</div>
+            }
+        }
+        <div class="col-md-4"> @Html.TextAreaFor(model => model.inputCode)</div>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+
+    
+
+    <div class="row">
+        <p>@ViewBag.Message</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6"><button class="btn btn-block" type="submit">Compile!</button> </div>
+    </div>
+</div>
+
+
+
+
+}
