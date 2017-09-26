@@ -13,7 +13,7 @@ namespace SlackerRank_preAlpha.Models
         public string CodeSolution { set; get; }
         public string CodeExe { set; get; }
         public string CodePath { set; get; }
-        public List<string> CodeInputs { set; get; }
+        //public List<string> CodeInputs { set; get; } --> implement model that creates a listing of codeinputs, and then map to this model.
 
 
 
