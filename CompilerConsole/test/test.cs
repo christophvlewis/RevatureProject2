@@ -13,6 +13,7 @@ namespace CompilerConsole.test
 		public static void testtest()
 		{
 			Assert.True(true);
+			Assert.False(false);
 		}
 	}
 }
