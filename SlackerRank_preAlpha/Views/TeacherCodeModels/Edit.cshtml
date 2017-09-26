@@ -1,0 +1,49 @@
+﻿@model SlackerRank_preAlpha.Models.TeacherCodeModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>TeacherCodeModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CodeIntro" class="control-label"></label>
+                <input asp-for="CodeIntro" class="form-control" />
+                <span asp-validation-for="CodeIntro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodeSolution" class="control-label"></label>
+                <input asp-for="CodeSolution" class="form-control" />
+                <span asp-validation-for="CodeSolution" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodeExe" class="control-label"></label>
+                <input asp-for="CodeExe" class="form-control" />
+                <span asp-validation-for="CodeExe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodePath" class="control-label"></label>
+                <input asp-for="CodePath" class="form-control" />
+                <span asp-validation-for="CodePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SlackerRank_preAlpha.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SlackerRank_preAlpha
 {
@@ -21,6 +23,10 @@ namespace SlackerRank_preAlpha
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string myDefaultConnection = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddDbContext<MyDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 
@@ -43,7 +49,7 @@ namespace SlackerRank_preAlpha
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Compiler}/{action=Index}/{id?}");
+                    template: "{controller=ProblemList}/{action=Index}/{id?}");
             });
         }
     }
