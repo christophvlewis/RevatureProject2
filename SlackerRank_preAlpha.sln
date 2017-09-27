@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlackerRank_preAlpha", "SlackerRank_preAlpha\SlackerRank_preAlpha.csproj", "{3AFBFD8D-A5C1-4882-99D8-6B6DF2179B80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompilerConsole", "CompilerConsole\CompilerConsole.csproj", "{3420B564-EAA2-4955-9FDA-A84DD918D005}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackerRankAPI", "SlackerRankAPI\SlackerRankAPI.csproj", "{FB534FE7-8F2E-4F4A-B5FB-5BA5FD6420E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackerRankData", "SlackerRankData\SlackerRankData.csproj", "{0DED4895-87B6-4828-91CA-B3CAED98D2D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FB534FE7-8F2E-4F4A-B5FB-5BA5FD6420E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB534FE7-8F2E-4F4A-B5FB-5BA5FD6420E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB534FE7-8F2E-4F4A-B5FB-5BA5FD6420E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DED4895-87B6-4828-91CA-B3CAED98D2D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DED4895-87B6-4828-91CA-B3CAED98D2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DED4895-87B6-4828-91CA-B3CAED98D2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DED4895-87B6-4828-91CA-B3CAED98D2D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

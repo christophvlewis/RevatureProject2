@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CompilerConsole\CompilerConsole.csproj" />
+    <ProjectReference Include="..\SlackerRankData\SlackerRankData.csproj" />
   </ItemGroup>
 
   <ItemGroup>
