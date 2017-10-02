@@ -2,6 +2,7 @@
 using SlackerRankData.Model;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace SlackerRankData.DataLogic
 {
@@ -34,10 +35,10 @@ namespace SlackerRankData.DataLogic
 
         // READ - Get status of user attempts
         public List<Progress> FindStatus(string Email, int QuestionNumber)
-        {
+        { 
             var AllRows = context.Progresses;
             var TempList = new List<Progress>();
-            foreach(var p in AllRows)
+            foreach (var p in AllRows)
             {
                 if (p.Email == Email && p.QuestionNumber == QuestionNumber)
                     TempList.Add(new Progress
@@ -48,9 +49,31 @@ namespace SlackerRankData.DataLogic
                         NumberWrong = p.NumberWrong
                     });
             } // End foreach
-
             return TempList;
         } // End FindStatus
+
+        // DELETE a user's progress record
+        public bool DeleteStatus(string Email)
+        {
+            try
+            {
+                List<Progress> AllRowsList = context.Progresses.ToList<Progress>();
+                foreach (var row in AllRowsList)
+                {
+                    if (row.Email == Email)
+                    {
+                        context.Progresses.Remove(row);
+                    }
+                }
+                context.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+        } // End DeleteStatus
 
     } // End Class
 } // End Namespace

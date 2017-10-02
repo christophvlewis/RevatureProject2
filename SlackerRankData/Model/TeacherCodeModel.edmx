@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ChallengerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ChallengerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="Email" />
@@ -15,7 +15,7 @@
           <Key>
             <PropertyRef Name="QuestionNumber" />
           </Key>
-          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="QuestionNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Objetive" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Answer" Type="nvarchar" MaxLength="500" Nullable="false" />
@@ -28,12 +28,13 @@
         </EntityType>
         <EntityType Name="Progress">
           <Key>
-            <PropertyRef Name="Email" />
+            <PropertyRef Name="TableID" />
           </Key>
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NumberRight" Type="int" Nullable="false" />
           <Property Name="NumberWrong" Type="int" Nullable="false" />
           <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="TableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -79,10 +80,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Progress_Email">
-          <End Role="UserCreds" Type="Self.UserCreds" Multiplicity="1" />
-          <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
+          <End Role="NonAdmin" Type="Self.NonAdmin" Multiplicity="1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserCreds">
+            <Principal Role="NonAdmin">
               <PropertyRef Name="Email" />
             </Principal>
             <Dependent Role="Progress">
@@ -118,7 +119,7 @@
             <End Role="NonAdmin" EntitySet="NonAdmin" />
           </AssociationSet>
           <AssociationSet Name="FK_Progress_Email" Association="Self.FK_Progress_Email">
-            <End Role="UserCreds" EntitySet="UserCreds" />
+            <End Role="NonAdmin" EntitySet="NonAdmin" />
             <End Role="Progress" EntitySet="Progress" />
           </AssociationSet>
           <AssociationSet Name="FK_Progress_QuestionNumber" Association="Self.FK_Progress_QuestionNumber">
@@ -126,8 +127,7 @@
             <End Role="Progress" EntitySet="Progress" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ChallengerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -154,17 +154,19 @@
           </Key>
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserCred" Relationship="Self.FK_NonAdmin_Email" FromRole="NonAdmin" ToRole="UserCreds" />
+          <NavigationProperty Name="Progresses" Relationship="ChallengerDBModel.FK_Progress_Email1" FromRole="NonAdmin" ToRole="Progress" />
         </EntityType>
         <EntityType Name="Progress">
           <Key>
-            <PropertyRef Name="Email" />
+            <PropertyRef Name="TableID" />
           </Key>
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumberRight" Type="Int32" Nullable="false" />
           <Property Name="NumberWrong" Type="Int32" Nullable="false" />
           <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Challenge" Relationship="Self.FK_Progress_QuestionNumber" FromRole="Progress" ToRole="Challenge" />
-          <NavigationProperty Name="UserCred" Relationship="Self.FK_Progress_Email" FromRole="Progress" ToRole="UserCreds" />
+          <Property Name="TableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="NonAdmin" Relationship="ChallengerDBModel.FK_Progress_Email1" FromRole="Progress" ToRole="NonAdmin" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -186,7 +188,6 @@
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Administrator" Relationship="Self.FK_Administrator_Email" FromRole="UserCreds" ToRole="Administrator" />
           <NavigationProperty Name="NonAdmin" Relationship="Self.FK_NonAdmin_Email" FromRole="UserCreds" ToRole="NonAdmin" />
-          <NavigationProperty Name="Progress" Relationship="Self.FK_Progress_Email" FromRole="UserCreds" ToRole="Progress" />
         </EntityType>
         <Association Name="FK_Administrator_Email">
           <End Role="UserCreds" Type="Self.UserCred" Multiplicity="1" />
@@ -224,18 +225,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Progress_Email">
-          <End Role="UserCreds" Type="Self.UserCred" Multiplicity="1" />
-          <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="UserCreds">
-              <PropertyRef Name="Email" />
-            </Principal>
-            <Dependent Role="Progress">
-              <PropertyRef Name="Email" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ChallengerDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrators" EntityType="Self.Administrator" />
           <EntitySet Name="Challenges" EntityType="Self.Challenge" />
@@ -255,11 +244,23 @@
             <End Role="UserCreds" EntitySet="UserCreds" />
             <End Role="NonAdmin" EntitySet="NonAdmins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Progress_Email" Association="Self.FK_Progress_Email">
-            <End Role="UserCreds" EntitySet="UserCreds" />
+          <AssociationSet Name="FK_Progress_Email1" Association="ChallengerDBModel.FK_Progress_Email1">
+            <End Role="NonAdmin" EntitySet="NonAdmins" />
             <End Role="Progress" EntitySet="Progresses" />
           </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Progress_Email1">
+          <End Type="ChallengerDBModel.NonAdmin" Role="NonAdmin" Multiplicity="1" />
+          <End Type="ChallengerDBModel.Progress" Role="Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonAdmin">
+              <PropertyRef Name="Email" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -293,6 +294,7 @@
           <EntitySetMapping Name="Progresses">
             <EntityTypeMapping TypeName="ChallengerDBModel.Progress">
               <MappingFragment StoreEntitySet="Progress">
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="NumberRight" ColumnName="NumberRight" />
                 <ScalarProperty Name="NumberWrong" ColumnName="NumberWrong" />

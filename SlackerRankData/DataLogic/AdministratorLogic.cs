@@ -3,6 +3,7 @@ using SlackerRankData.Model;
 using System.Data.Entity;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace SlackerRankData.DataLogic
 {
@@ -38,6 +39,43 @@ namespace SlackerRankData.DataLogic
 
         } // End CreateUser
 
+        // READ - Get a single Administrator
+        public UserCred GetAdmin(string Email)
+        {
+            UserCred temp = context.UserCreds.FirstOrDefault(i => i.Email == Email);
+            return temp;
+        } // End GetAdmin
+
+        // READ - Get list of all Users
+        public List<UserCred> ListOfAdministrators()
+        {
+            List<UserCred> NonAdminList = context.UserCreds.ToList<UserCred>();
+            return NonAdminList;
+        } // End ListOfAdministrators
+
+        // UPDATE an Administrator
+        public bool UpdateUser(string Email, string Password, string FirstName, string LastName)
+        {
+            try
+            {
+                UserCred temp = context.UserCreds.FirstOrDefault(i => i.Email == Email);
+                temp.Psswrd = Password;
+                temp.FirstName = FirstName;
+                temp.LastName = LastName;
+                context.UserCreds.Add(temp);
+                context.Entry(temp).State = EntityState.Modified; // Updating the selected Row
+
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+
+        } // End UpdateUser
+        
         // DELETE a User
         public override bool DeleteUser(string Email)
         {
@@ -58,66 +96,6 @@ namespace SlackerRankData.DataLogic
                 return false;
             }
         } // End DeleteUser
-
-        // CREATE a new Challenge
-        public bool CreateChallenge(string Objective, string Question, string Answer)
-        {
-            try
-            {
-                Challenge temp = new Challenge();
-                temp.Objetive = Objective; // Misspelling
-                temp.Question = Question;
-                temp.Answer = Answer;
-                context.Challenges.Add(temp);
-
-                context.SaveChanges();
-                return true;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return false;
-            }
-        } // End CreateChallenge
-
-        // UPDATE a Challenge Question
-        public bool UpdateChallenge(int Index, string Objective, string Question, string Answer)
-        {
-            try
-            {
-                Challenge temp = context.Challenges.FirstOrDefault(i => i.QuestionNumber == Index);
-                temp.Objetive = Objective;
-                temp.Question = Question;
-                temp.Answer = Answer;
-                context.Entry(temp).State = EntityState.Modified; // Updating the selected Row
-
-                context.SaveChanges();
-                return true;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return false;
-            }
-
-        } // End UpdateChallenge
-
-        // DELETE a Challenge
-        public bool DeleteChallenge(int Index)
-        {
-            try
-            {
-                Challenge temp = context.Challenges.FirstOrDefault(i => i.QuestionNumber == Index);
-                context.Challenges.Remove(temp);
-                context.SaveChanges();
-                return true;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                return false;
-            }
-        } // End DeleteChallenge
 
     } // End Class
 } // End Namespace

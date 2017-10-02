@@ -18,8 +18,9 @@ namespace SlackerRankData.Model
         public int NumberRight { get; set; }
         public int NumberWrong { get; set; }
         public int QuestionNumber { get; set; }
+        public int TableID { get; set; }
     
         public virtual Challenge Challenge { get; set; }
-        public virtual UserCred UserCred { get; set; }
+        public virtual NonAdmin NonAdmin { get; set; }
     }
 }

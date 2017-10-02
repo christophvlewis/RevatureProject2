@@ -14,8 +14,16 @@ namespace SlackerRankData.Model
     
     public partial class NonAdmin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NonAdmin()
+        {
+            this.Progresses = new HashSet<Progress>();
+        }
+    
         public string Email { get; set; }
     
         public virtual UserCred UserCred { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Progress> Progresses { get; set; }
     }
 }

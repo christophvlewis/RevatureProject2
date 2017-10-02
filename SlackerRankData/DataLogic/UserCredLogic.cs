@@ -13,12 +13,6 @@ namespace SlackerRankData.DataLogic
 
         public abstract bool DeleteUser(string Email);
 
-        // READ - Getting selected Challenge
-        public Challenge GetChallenge(int Index)
-        {
-            Challenge temp = context.Challenges.FirstOrDefault(i => i.QuestionNumber == Index);
-            return temp;
-        } // End GetChallenge
 
     } // End Class
 } // End Namespace

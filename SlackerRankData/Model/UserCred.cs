@@ -21,11 +21,5 @@ namespace SlackerRankData.Model
     
         public virtual Administrator Administrator { get; set; }
         public virtual NonAdmin NonAdmin { get; set; }
-        public virtual Progress Progress { get; set; }
-
-        public static implicit operator UserCred(NonAdmin v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

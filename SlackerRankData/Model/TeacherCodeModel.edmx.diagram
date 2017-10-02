@@ -14,7 +14,7 @@
         <AssociationConnector Association="ChallengerDBModel.FK_Administrator_Email" ManuallyRouted="false" />
         <AssociationConnector Association="ChallengerDBModel.FK_Progress_QuestionNumber" ManuallyRouted="false" />
         <AssociationConnector Association="ChallengerDBModel.FK_NonAdmin_Email" ManuallyRouted="false" />
-        <AssociationConnector Association="ChallengerDBModel.FK_Progress_Email" ManuallyRouted="false" />
+        <AssociationConnector Association="ChallengerDBModel.FK_Progress_Email1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
