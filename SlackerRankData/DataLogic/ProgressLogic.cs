@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SlackerRankData.Model;
 using System.Collections.Generic;
+using System;
 
 namespace SlackerRankData.DataLogic
 {
@@ -10,16 +11,25 @@ namespace SlackerRankData.DataLogic
         private ChallengerDBEntities context = new ChallengerDBEntities();
 
         // CREATE - Adding status of user attempts
-        public void AddStatus(string Email, int Correct, int Wrong, int QuestionNumber)
+        public bool AddStatus(string Email, int Correct, int Wrong, int QuestionNumber)
         {
-            Progress Temp = new Progress();
-            Temp.Email = Email;
-            Temp.NumberRight = Correct;
-            Temp.NumberWrong = Wrong;
-            Temp.QuestionNumber = QuestionNumber;
-            context.Progresses.Add(Temp);
+            try
+            {
+                Progress Temp = new Progress();
+                Temp.Email = Email;
+                Temp.NumberRight = Correct;
+                Temp.NumberWrong = Wrong;
+                Temp.QuestionNumber = QuestionNumber;
+                context.Progresses.Add(Temp);
 
-            context.SaveChanges();
+                context.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
         } // End AddStatus
 
         // READ - Get status of user attempts

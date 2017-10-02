@@ -9,7 +9,9 @@ namespace SlackerRankData.DataLogic
     {
         private ChallengerDBEntities context = new ChallengerDBEntities();
 
-        public abstract void CreateUser(string Email, string Password, string FirstName, string LastName);
+        public abstract bool CreateUser(string Email, string Password, string FirstName, string LastName);
+
+        public abstract bool DeleteUser(string Email);
 
         // READ - Getting selected Challenge
         public Challenge GetChallenge(int Index)

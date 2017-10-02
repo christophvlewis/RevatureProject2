@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SlackerRankData.Model;
+using System;
+using System.Linq;
 
 namespace SlackerRankData.DataLogic
 {
@@ -9,20 +11,52 @@ namespace SlackerRankData.DataLogic
         private ChallengerDBEntities context = new ChallengerDBEntities();
 
         // CREATE a NonAdmin User
-        public override void CreateUser(string Email, string Password, string FirstName, string LastName)
+        public override bool CreateUser(string Email, string Password, string FirstName, string LastName)
         {
-            UserCred temp = new UserCred();
-            temp.Email = Email;
-            temp.Psswrd = Password;
-            temp.FirstName = FirstName;
-            temp.LastName = LastName;
-            context.UserCreds.Add(temp);
+            try
+            {
+                UserCred temp = new UserCred();
+                temp.Email = Email;
+                temp.Psswrd = Password;
+                temp.FirstName = FirstName;
+                temp.LastName = LastName;
+                context.UserCreds.Add(temp);
 
-            NonAdmin userTemp = new NonAdmin();
-            userTemp.Email = Email;
-            context.NonAdmins.Add(userTemp);
+                NonAdmin userTemp = new NonAdmin();
+                userTemp.Email = Email;
+                context.NonAdmins.Add(userTemp);
 
-            context.SaveChanges();
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+
         } // End CreateUser
+          
+        // DELETE a User
+        public override bool DeleteUser(string Email)
+        {
+            try
+            {
+                NonAdmin AdminTemp = context.NonAdmins.FirstOrDefault(i => i.Email == Email);
+                context.NonAdmins.Remove(AdminTemp);
+
+                UserCred Temp = context.UserCreds.FirstOrDefault(i => i.Email == Email);
+                context.UserCreds.Remove(Temp);
+                context.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+        } // End DeleteUser
+
     } // End Class
 } // End Namespace

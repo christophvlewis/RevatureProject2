@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace SlackerRankData
 {
-    class Program
+    public class Program
     {
+        
         static void Main(string[] args)
         {
-
+            Console.WriteLine("here");
+            return;
         }
     }
 }

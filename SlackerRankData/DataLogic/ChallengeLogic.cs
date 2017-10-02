@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SlackerRankData.DataLogic
 {
     [Produces("application/json")]
-    public class Question
+    public class ChallengeLogic
     {
         private ChallengerDBEntities context = new ChallengerDBEntities();
 
@@ -16,8 +16,6 @@ namespace SlackerRankData.DataLogic
             List<Challenge> ChallengeList = context.Challenges.ToList<Challenge>();
             return ChallengeList;
         } // End ListOfChallenges
-
-        public Challenge
 
     } // End Question Class
 } // End Namespace
