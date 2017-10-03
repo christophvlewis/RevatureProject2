@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace SlackerRankData.DataLogic
 {
-    [Produces("application/json")]
+  
     public class NonAdminLogic : UserCredLogic
     {
         private ChallengerDBEntities context = new ChallengerDBEntities();

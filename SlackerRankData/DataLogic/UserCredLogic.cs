@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SlackerRankData.DataLogic
 {
-    [Produces("application/json")]
+    
     public abstract class UserCredLogic
     {
         private ChallengerDBEntities context = new ChallengerDBEntities();

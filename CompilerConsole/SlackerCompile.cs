@@ -37,7 +37,7 @@ using System.Diagnostics;
 //class SlackerRun : SlackerRankAPI.
 namespace SlackerRankCompilerClasses
 {
-   public class SlackerCompile : SlackerRankAPI.ICompiler
+   public class SlackerCompile
     {
         public List<string> RunItResult { set; get; }
         public List<Diagnostic> CompileItResult { set; get; }
