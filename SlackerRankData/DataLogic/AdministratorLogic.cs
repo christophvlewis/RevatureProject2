@@ -7,10 +7,9 @@ using System.Collections.Generic;
 
 namespace SlackerRankData.DataLogic
 {
-    [Produces("application/json")]
-    public class AdministratorLogic : UserCredLogic
+	public class AdministratorLogic : UserCredLogic
     {
-        private ChallengerDBEntities context = new ChallengerDBEntities();
+		private ChallengerDBEntities context = new ChallengerDBEntities();
 
         // CREATE an Administrator
         public override bool CreateUser(string Email, string Password, string FirstName, string LastName)

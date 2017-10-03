@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SlackerRank_preAlpha.Data;
-using SlackerRankAPI;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace SlackerRank_preAlpha

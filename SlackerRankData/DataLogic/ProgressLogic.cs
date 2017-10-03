@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SlackerRankData.DataLogic
 {
-    [Produces("application/json")]
+    
     public class ProgressLogic
     {
         private ChallengerDBEntities context = new ChallengerDBEntities();
