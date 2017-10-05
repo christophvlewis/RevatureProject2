@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script src="~/lib/angular/angular.min.js"></script>
+
+<script src="~/js/app-problemlist.js"></script>
+
+<script src="~/js/problemlistController.js"></script>
+
+<script src="~/lib/angular-route/angular-route.min.js"></script>
+
+<script src="~lib/jq-console/jqconsole.js"></script>
+
+<style>
+```css
+    /* The console container element */
+    #console {
+      position: absolute;
+      width: 400px;
+      height: 500px;
+      background-color:black;
+    }
+    /* The inner console element. */
+    .jqconsole {
+        padding: 10px;
+    }
+    /* The cursor. */
+    .jqconsole-cursor {
+        background-color: gray;
+    }
+    /* The cursor color when the console looses focus. */
+    .jqconsole-blurred .jqconsole-cursor {
+        background-color: #666;
+    }
+    /* The current prompt text color */
+    .jqconsole-prompt {
+        color: #0d0;
+    }
+    /* The command history */
+    .jqconsole-old-prompt {
+        color: #0b0;
+        font-weight: normal;
+    }
+    /* The text color when in input mode. */
+    .jqconsole-input {
+        color: #dd0;
+    }
+    /* Previously entered input. */
+    .jqconsole-old-input {
+        color: #bb0;
+        font-weight: normal;
+    }
+    /* The text color of the output. */
+    .jqconsole-output {
+        color: white;
+    }
+</style>
+
+
+<div ng-app="app-problemlist" ng-controller="problemlistController as vm">
+    {{"Welcome Student: " + vm.name}}
+
+    <div ng-app="app-problemlist"></div>
+    
+        
+            
+            <table id="tableId" class="table table-responsive table-striped">
+                <tr ng-repeat="problem in vm.problem">
+                    <td ng-click="vm.redirectCompiler(problem.id)">{{problem.id}}</td>
+                    
+                    
+                </tr>
+            </table>
+     
+             
+            @*
+    <form novalidate name="newTripForm" ng-submit="vm.addTrip()">
+        <div class="form-group">
+            <label for="name">Trip Name</label>
+            <input class="form-control" type="text" id="name" name="name" ng-model="vm.newTrip.name" />
+            {{vm.name}}
+            {{vm.newTrip.name}}
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-success btn-sm" />
+
+        </div>
+
+    </form>
+            *@
+    
+
+
+
+</div>
+         
+
+
+
+
