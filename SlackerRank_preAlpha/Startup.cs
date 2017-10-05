@@ -44,7 +44,7 @@ namespace SlackerRank_preAlpha
             }
 
             app.UseStaticFiles();
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

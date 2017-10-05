@@ -12,12 +12,24 @@ namespace SlackerRankData.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class ChallengerDBEntities : DbContext
-    {
+	using System.Configuration;
+
+
+	public partial class ChallengerDBEntities : DbContext
+	{
         public ChallengerDBEntities()
-            : base("name=ChallengerDBEntities")
-        {
+			//works for tests within project, but fails outside project
+			//: base()
+            //: base("name=ChallengerDBEntities")
+			:base("metadata=res://*/Model.TeacherCodeModel.csdl|res://*/Model.TeacherCodeModel.ssdl|res://*/Model.TeacherCodeModel.msl;provider=System.Data.SqlClient;provider connection string=\"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;persist security info=True;user id=miahtampa;password=Pass1234;MultipleActiveResultSets=True;App=EntityFramework\"")
+			//:base("metadata=C:\\Users\\Chris\\source\\repos\\RevatureProject2\\RevatureProject2\\SlackerRankData\\obj\\Debug\\edmxResourcesToEmbed\\Model\\;provider=System.Data.SqlClient;provider connection string=\"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;persist security info=True;user id=miahtampa;password=Pass1234;MultipleActiveResultSets=True;App=EntityFramework\"")
+
+
+
+			//:base("metadata=res:/SlackerRankData, 0.0.0.0, neutral, neutral/Model.TeacherCodeModel.csdl|res:/SlackerRankData, 0.0.0.0, neutral, neutral/Model.TeacherCodeModel.ssdl|res:/SlackerRankData, 0.0.0.0, neutral, neutral/Model.TeacherCodeModel.msl;provider=System.Data.SqlClient;provider connection string=\"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;persist security info=True;user id=miahtampa;password=Pass1234;MultipleActiveResultSets=True;App=EntityFramework\"")
+
+
+		{
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

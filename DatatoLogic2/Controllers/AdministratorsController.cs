@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DataToLogic2.Models;
+using DatatoLogic2.Models;
 using System.Net.Http;
 using System.Net;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Data.Common;
+using Microsoft.EntityFrameworkCore;
+using DatatoLogic2.DataLogic;
 
 namespace DataToLogic2.Controllers
 {
@@ -19,9 +22,8 @@ namespace DataToLogic2.Controllers
         [HttpGet]
         public IEnumerable<Administrator> Get()
         {
-			List<Administrator> return_admin_list = new List<Administrator>();
-
-			SlackerRankData.DataLogic.AdministratorLogic a = new SlackerRankData.DataLogic.AdministratorLogic();
+			List<Administrator> return_admin_list = new List<Administrator>(); 
+			AdministratorLogic a = new AdministratorLogic();
 			foreach (var admin in a.ListOfAdministrators())
 			{
 				return_admin_list.Add(new Administrator()
@@ -35,7 +37,9 @@ namespace DataToLogic2.Controllers
         [HttpGet("{email}")]
         public Administrator Get(string email)
         {
-			return new Administrator() {  Email = "chris" + email.ToString() };
+			// Code when connected : Get Single Administrator
+			var get = new AdministratorLogic().GetAdmin(email);
+			return new Administrator() { Email = get.Email, FirstName = get.FirstName, LastName = get.LastName, Psswrd = get.Psswrd };
         }
 
         // POST api/Administrators
@@ -45,7 +49,8 @@ namespace DataToLogic2.Controllers
 			if (!ModelState.IsValid || Admin == null)
 				return null;
 
-			//add Administrator to Database
+			// Code when connected : add Administrator to Database
+			var add = new AdministratorLogic().CreateUser(Admin.Email, Admin.Psswrd, Admin.FirstName, Admin.LastName);
 
 			return Admin;
         }
@@ -54,7 +59,11 @@ namespace DataToLogic2.Controllers
         [HttpPut("{email}")]
         public Administrator Put(string email, [FromBody]Administrator admin_update)
         {
-			//update Administrator from database
+			if (!ModelState.IsValid || admin_update == null)
+				return null;
+
+			// Code when connected : update Administrator from database
+			var update = new AdministratorLogic().UpdateUser(admin_update.Email, admin_update.Psswrd, admin_update.FirstName, admin_update.LastName);
 			return admin_update;
         }
 
@@ -62,7 +71,8 @@ namespace DataToLogic2.Controllers
 		[HttpDelete("{email}")]
 		public void Delete(string email)
         {
-			//delete Administrator from database
+			// Code when connected : delete Administrator from database
+			var delete = new AdministratorLogic().DeleteUser(email);
         }
     }
 }

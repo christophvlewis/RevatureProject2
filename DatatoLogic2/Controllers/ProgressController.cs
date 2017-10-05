@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DataToLogic2.Models;
+using DatatoLogic2.Models;
 using System.Net.Http;
 using System.Net;
 using Newtonsoft.Json;

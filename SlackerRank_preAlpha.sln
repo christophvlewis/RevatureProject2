@@ -12,8 +12,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{428385C4-236F-4B15-A822-1658EB6F02AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatatoLogic2", "DatatoLogic2\DatatoLogic2.csproj", "{FAA0D99A-67A4-415C-B366-470C2DCD1F48}"
+
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationDATA", "WebApplicationDATA\WebApplicationDATA.csproj", "{9E8C59FE-43C4-45EE-AFE1-EC1D336C429A}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
