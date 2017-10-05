@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatatoLogic2
 {
@@ -15,7 +16,9 @@ namespace DatatoLogic2
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+           Configuration = configuration;
+			//var builder = new ConfigurationBuilder().AddXmlFile(@"C:\Users\Chris\Source\Repos\RevatureProject2\RevatureProject2\SlackerRankData\App.config");
+			//Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -24,6 +27,13 @@ namespace DatatoLogic2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+			services.AddEntityFrameworkSqlServer();
+			//services.AddDbContext<SlackerRankData.Model.ChallengerDBEntities>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+			//services.AddEntityFrameworkSqlServer();
+			//Configuration.GetConnectionString("DefaultConnection");
+			//services.AddEntityFrameworkSqlServer().AddDbContext<DbContext>(o => o.UseSqlServer("DefaultConnection"));
+	
+			
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,4 +47,6 @@ namespace DatatoLogic2
             app.UseMvc();
         }
     }
+
+
 }

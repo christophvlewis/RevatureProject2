@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DataToLogic2.Models
+namespace DatatoLogic2.Models
 {
     public class Progress
     {

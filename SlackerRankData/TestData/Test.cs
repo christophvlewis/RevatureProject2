@@ -15,14 +15,14 @@ namespace SlackerRankData.TestData
 		//[Fact]
 		//public static void TestCreateUser()
 		//{
-		//    var Admin = new AdministratorLogic();
-		//    string Email = "T800@gmail.com";
-		//    string Password = "MustDestroy";
-		//    string FirstName = "Aanold";
-		//    string LastName = "Schvatzanega";
-		//    var success = Admin.CreateUser(Email, Password, FirstName, LastName);
-		//    Assert.True(success);
-		//    Assert.False(Admin.CreateUser(Email, Password, FirstName, LastName));
+		//	var Admin = new AdministratorLogic();
+		//	string Email = "T700@gmail.com";
+		//	string Password = "MustDestroy";
+		//	string FirstName = "Older";
+		//	string LastName = "Model";
+		//	var success = Admin.CreateUser(Email, Password, FirstName, LastName);
+		//	Assert.True(success);
+		//	Assert.False(Admin.CreateUser(Email, Password, FirstName, LastName));
 		//} // End TestCreateUser
 
 		// UPDATE Administrator Test
@@ -39,15 +39,16 @@ namespace SlackerRankData.TestData
 		//} // End TestUpdateUser
 
 		// DELETE Administrator Test
-		//[Fact]
-		//public static void TestDeleteUser()
-		//{
-		//    var Admin = new AdministratorLogic();
-		//    string Email = "Miah@gmail.com";
-		//    var success = Admin.DeleteUser(Email);
-		//    Assert.True(success);
-		//    Assert.False(Admin.DeleteUser(Email));
-		//} // End TestDeleteUser
+		[Fact]
+		public static void TestDeleteUser()
+		{
+			var Admin = new AdministratorLogic();
+			//string Email = "Miah@gmail.com";
+			string Email = "T700@gmail.com";
+			var success = Admin.DeleteUser(Email);
+			Assert.True(success);
+			Assert.False(Admin.DeleteUser(Email));
+		} // End TestDeleteUser
 		// *******************************Administrator**********************************
 
 		// *******************************NonAdmin**********************************
@@ -55,14 +56,14 @@ namespace SlackerRankData.TestData
 		//[Fact]
 		//public static void TestCreateUser()
 		//{
-		//    var NonAdmin = new NonAdminLogic();
-		//    string Email = "Colorado@gmail.com";
-		//    string Password = "MountainLife";
-		//    string FirstName = "Snowboard";
-		//    string LastName = "Rider";
-		//    var success = NonAdmin.CreateUser(Email, Password, FirstName, LastName);
-		//    Assert.True(success);
-		//    Assert.False(NonAdmin.CreateUser(Email, Password, FirstName, LastName));
+		//	var NonAdmin = new NonAdminLogic();
+		//	string Email = "Colorado@gmail.com";
+		//	string Password = "MountainLife";
+		//	string FirstName = "Snowboard";
+		//	string LastName = "Rider";
+		//	var success = NonAdmin.CreateUser(Email, Password, FirstName, LastName);
+		//	Assert.True(success);
+		//	Assert.False(NonAdmin.CreateUser(Email, Password, FirstName, LastName));
 		//} // End TestCreateUser
 
 		// UPDATE NonAdmin Test
