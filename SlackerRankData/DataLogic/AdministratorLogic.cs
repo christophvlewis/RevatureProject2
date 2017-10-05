@@ -45,11 +45,19 @@ namespace SlackerRankData.DataLogic
             return temp;
         } // End GetAdmin
 
-        // READ - Get list of all Users
+        // READ - Get list of all Administrators
         public List<UserCred> ListOfAdministrators()
         {
-            List<UserCred> NonAdminList = context.UserCreds.ToList<UserCred>();
-            return NonAdminList;
+            List<UserCred> AdminList = 
+               (List<UserCred>)from a in context.Administrators
+                               join u in context.UserCreds on a.Email equals u.Email
+                               select new
+                               {
+                                   Email = u.Email,
+                                   FirstName = u.FirstName,
+                                   LastName = u.LastName
+                               };
+            return AdminList;
         } // End ListOfAdministrators
 
         // UPDATE an Administrator

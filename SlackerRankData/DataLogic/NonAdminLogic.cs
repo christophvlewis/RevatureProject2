@@ -46,10 +46,18 @@ namespace SlackerRankData.DataLogic
             return temp;
         } // End GetNonAdmin
 
-        // READ - Get list of all Users
+        // READ - Get list of all NonAdmins
         public List<UserCred> ListOfNonAdmins()
         {
-            List<UserCred> NonAdminList = context.UserCreds.ToList<UserCred>();
+            List<UserCred> NonAdminList =
+               (List<UserCred>)from a in context.NonAdmins
+                               join u in context.UserCreds on a.Email equals u.Email
+                               select new
+                               {
+                                   Email = u.Email,
+                                   FirstName = u.FirstName,
+                                   LastName = u.LastName
+                               };
             return NonAdminList;
         } // End ListOfNonAdmins
 
