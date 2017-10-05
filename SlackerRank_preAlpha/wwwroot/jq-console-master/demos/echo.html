@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+    html, body {
+      background-color: #333;
+      color: white;
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* The console container element */
+    #console {
+      color: black;
+      height: 750px;
+      width: 500px;
+      position:fixed;
+      background-color: black;
+      border: 2px solid #CCC;
+      left:0;
+      top:0;
+      
+
+    }
+
+        #container {
+            width: 1000px;
+            height: 750px;
+            border: 2px solid #CCC;
+            background-color: black;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+    /* The inner console element. */
+    .jqconsole {
+        padding: 10px;
+    }
+    /* The cursor. */
+    .jqconsole-cursor {
+        background-color: gray;
+    }
+    /* The cursor color when the console looses focus. */
+    .jqconsole-blurred .jqconsole-cursor {
+        background-color: #666;
+    }
+    /* The current prompt text color */
+    .jqconsole-prompt {
+        color: #0d0;
+    }
+    /* The command history */
+    .jqconsole-old-prompt {
+        color: #0b0;
+        font-weight: normal;
+    }
+    /* The text color when in input mode. */
+    .jqconsole-input {
+        color: #dd0;
+    }
+    /* Previously entered input. */
+    .jqconsole-old-input {
+        color: #bb0;
+        font-weight: normal;
+    }
+    /* The text color of the output. */
+    .jqconsole-output {
+        color: white;
+    }
+    </style>
+
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+  </head>
+  <body>
+
+
+      <div id="container"></div>
+      
+      <script src="../../monaco-editor-master/min/vs/loader.js"></script>
+      
+      <script>
+          require.config({ paths: { 'vs': '../../monaco-editor-master/min/vs' } });
+          require(['vs/editor/editor.main'], function () {
+              var editor = monaco.editor.create(document.getElementById('container'), {
+                  themeName:"vs-dark",
+                  value: [
+                      'function x() {',
+                      '\tconsole.log("Hello world!");',
+                      '}'
+                  ].join('\n'),
+                  language: 'javascript' //'csharp'
+
+                  //TODO: Intellisense for C#, get string from IDE, pass to compiler, have problem prompt be pasted as comments into the program
+                 //limit using statements to what is needed for euler problems.
+                //
+               //
+              });
+          });
+      </script>
+
+      
+        
+
+
+    <div id="console"></div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../lib/jqconsole.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      $(function () {
+        var jqconsole = $('#console').jqconsole('', 'C:\\> ');
+        var startPrompt = function () {
+          // Start the prompt with history enabled.
+          jqconsole.Prompt(true, function (input) {
+            // Output input with the class jqconsole-output.
+            jqconsole.Write(input + '\n', 'jqconsole-output');   //write what is recieved from CompilerConsole
+            // Restart the prompt.
+            startPrompt();
+
+              //TODO: Callback function, for input/output. Pass back and forth, inputs and outputs from CompilerConsole. Make sure debug outputs as expected
+          });
+        };
+        startPrompt();
+      });
+    </script>
+  </body>
+</html>
