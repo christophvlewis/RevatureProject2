@@ -74,8 +74,20 @@ namespace SlackerRankData.DataLogic
         {
             try
             {
+                // Removing from Progress table
+                List<Progress> AllRowsList = context.Progresses.ToList<Progress>();
+                foreach (var row in AllRowsList)
+                {
+                    if (row.QuestionNumber == Index)
+                    {
+                        context.Progresses.Remove(row);
+                    }
+                }
+
+                // Removing from Challenge questions table
                 Challenge temp = context.Challenges.FirstOrDefault(i => i.QuestionNumber == Index);
                 context.Challenges.Remove(temp);
+
                 context.SaveChanges();
                 return true;
             }
