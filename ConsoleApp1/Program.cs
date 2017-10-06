@@ -21,7 +21,9 @@ namespace ConsoleApp1
 			//Challenge stuff
 			//PostChallenges();
 			//PutChallenges();
-			DeleteChallenges();
+			//DeleteChallenges();
+
+
 		}
 
 		public static void GetAdmininstrator()

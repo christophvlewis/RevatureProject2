@@ -10,7 +10,7 @@ namespace DatatoLogic2.DataLogic
     {
         private ChallengerDBContext context = new ChallengerDBContext();
 
-        public abstract bool CreateUser(string Email, string Password, string FirstName, string LastName);
+		public abstract bool CreateUser(string Email, string Password, string FirstName, string LastName);
 
         public abstract bool DeleteUser(string Email);
 

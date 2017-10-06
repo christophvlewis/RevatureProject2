@@ -7,9 +7,10 @@ namespace DatatoLogic2.Models
 {
     public class Progress
     {
-		public string _email { get; set; }
-		public string _first_name { get; set; }
-		public string _last_name { get; set; }
-		public string _password { get; set; }
+		public string Email { get; set; }
+		public int NumberRight { get; set; }
+		public int NumberWrong { get; set; }
+		public int QuestionNumber { get; set; }
+		public int TableId { get; set; }
 	}
 }

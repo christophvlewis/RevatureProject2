@@ -1,23 +1,28 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace DatatoLogic2.src
 {
-    public partial class ChallengerDBContext : DbContext
-    {
-        public virtual DbSet<Administrator> Administrator { get; set; }
-        public virtual DbSet<Challenge> Challenge { get; set; }
-        public virtual DbSet<NonAdmin> NonAdmin { get; set; }
-        public virtual DbSet<Progress> Progress { get; set; }
-        public virtual DbSet<UserCreds> UserCreds { get; set; }
+	public partial class ChallengerDBContext : DbContext
+	{
+		public virtual DbSet<Administrator> Administrator { get; set; }
+		public virtual DbSet<Challenge> Challenge { get; set; }
+		public virtual DbSet<NonAdmin> NonAdmin { get; set; }
+		public virtual DbSet<Progress> Progress { get; set; }
+		public virtual DbSet<UserCreds> UserCreds { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;user id=miahtampa;password=Pass1234");
+				//optionsBuilder.UseSqlServer(@"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;user id=miahtampa;password=Pass1234");
+				optionsBuilder.UseSqlServer(Startup.ConnectionString);
+				
+
             }
         }
 

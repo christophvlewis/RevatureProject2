@@ -8,6 +8,9 @@ using SlackerRank_preAlpha.Models;
 using Microsoft.CodeAnalysis;
 using SlackerRank_preAlpha.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using Newtonsoft.Json;
+using SlackerRank_preAlpha.Converters;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -54,9 +57,14 @@ namespace SlackerRank_preAlpha.Controllers
             int toIntId;
             int.TryParse(myId.ToString(), out toIntId);
 
-            var myTeacherCode = _context.TeacherCode
+			var teachcode = new TeacherCodeModel().GetFromDatabase(toIntId);
+
+
+			/*
+			var myTeacherCode = _context.TeacherCode
              .SingleOrDefault(t => t.Id == toIntId); //grabs teacher row where id matches
             if (myTeacherCode == null) return Content("BLEEEECH");
+			*/
 
             //TeacherCodeModel myTeacherCode = (TeacherCodeModel)TempData["myProblem"];
             
@@ -64,13 +72,14 @@ namespace SlackerRank_preAlpha.Controllers
             List<string> testList = new List<string> {"1","2" };
             string testStudentCode = "using System;public class Program { static void Main() { int myInput = 1000; int mySum = 0; for (int i = myInput - 1; i > 0; i--) { if (i % 3 == 0 || i % 5 == 0) mySum = mySum + i; } Console.WriteLine(mySum); } }";
             string testTeacherCode = "using System;public class sum{public static void Main(){int sum = 0;for (int i = 1; i <= 999; i++){if (i % 3 == 0 || i % 5 == 0) { sum += i; }}Console.WriteLine(sum);}}";
-            //Tester myTester = new Tester(@"C:\myTeacher.exe", "myTeacher.exe",testTeacherCode, @"C:\myStudent.exe", "myStudent.exe",testStudentCode, testList);
-            Tester myTester = new Tester(myTeacherCode.CodePath + myTeacherCode.CodeExe, myTeacherCode.CodeExe, myTeacherCode.CodeSolution, @"C:\myStudent.exe", "myStudent.exe", model.inputCode, testList);
+			//Tester myTester = new Tester(@"C:\myTeacher.exe", "myTeacher.exe",testTeacherCode, @"C:\myStudent.exe", "myStudent.exe",testStudentCode, testList);
+			//Tester myTester = new Tester(myTeacherCode.CodePath + myTeacherCode.CodeExe, myTeacherCode.CodeExe, myTeacherCode.CodeSolution, @"C:\myStudent.exe", "myStudent.exe", model.inputCode, testList);
+			Tester myTester = new Tester(teachcode.CodePath + teachcode.CodeExe, teachcode.CodeExe, teachcode.CodeSolution, @"C:\Users\Chris\Desktop\myStudent.exe", "myStudent.exe", model.inputCode, testList);
 
 
-           // return Content(model.inputCode);
-            //return Content(myTeacherCode.CodeSolution);
-            bool myTestResult = myTester.TestIt();
+			// return Content(model.inputCode);
+			//return Content(myTeacherCode.CodeSolution);
+			bool myTestResult = myTester.TestIt();
             return Content(myTestResult.ToString());
 
             //sending inputs into the prog.

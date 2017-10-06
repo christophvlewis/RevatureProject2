@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlackerRank_preAlpha", "SlackerRank_preAlpha\SlackerRank_preAlpha.csproj", "{3AFBFD8D-A5C1-4882-99D8-6B6DF2179B80}"
 EndProject
@@ -12,10 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{428385C4-236F-4B15-A822-1658EB6F02AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatatoLogic2", "DatatoLogic2\DatatoLogic2.csproj", "{FAA0D99A-67A4-415C-B366-470C2DCD1F48}"
-
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationDATA", "WebApplicationDATA\WebApplicationDATA.csproj", "{9E8C59FE-43C4-45EE-AFE1-EC1D336C429A}"
-
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +39,6 @@ Global
 		{FAA0D99A-67A4-415C-B366-470C2DCD1F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA0D99A-67A4-415C-B366-470C2DCD1F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA0D99A-67A4-415C-B366-470C2DCD1F48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E8C59FE-43C4-45EE-AFE1-EC1D336C429A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E8C59FE-43C4-45EE-AFE1-EC1D336C429A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E8C59FE-43C4-45EE-AFE1-EC1D336C429A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E8C59FE-43C4-45EE-AFE1-EC1D336C429A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

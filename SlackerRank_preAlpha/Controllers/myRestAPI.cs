@@ -20,7 +20,7 @@ namespace SlackerRank_preAlpha.Controllers
     }
 
 
-    [Route("/api/default")]
+		[Route("/api/default")]
         public ActionResult APIDefault() {
 
             return View();

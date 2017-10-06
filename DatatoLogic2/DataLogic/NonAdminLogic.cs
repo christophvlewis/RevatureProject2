@@ -10,7 +10,7 @@ namespace DatatoLogic2.DataLogic
   
     public class NonAdminLogic : UserCredLogic
     {
-        private ChallengerDBContext context = new ChallengerDBContext();
+		private ChallengerDBContext context = new ChallengerDBContext();
 
         // CREATE a NonAdmin User
         public override bool CreateUser(string Email, string Password, string FirstName, string LastName)

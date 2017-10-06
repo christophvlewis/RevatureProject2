@@ -7,6 +7,7 @@ using DatatoLogic2.Models;
 using System.Net.Http;
 using System.Net;
 using Newtonsoft.Json;
+using DatatoLogic2.DataLogic;
 
 namespace DataToLogic2.Controllers
 {
@@ -18,20 +19,18 @@ namespace DataToLogic2.Controllers
         [HttpGet]
         public IEnumerable<Progress> Get()
         {
-			return new List<Progress>()
-			{
-				new Progress(){   },
-				new Progress(){   },
-				new Progress(){   }
-			};
+			return null;
         }
 
         // GET api/Progress/{email}
         [HttpGet("{email}/{QN}")]
         public Progress Get(string email, int QN)
         {
-			return new Progress() { };
-        }
+
+			var get = new ProgressLogic().FindStatus(email,QN);
+			return null;
+			//return new Progress() { Email = get.Email, FirstName = get.FirstName, LastName = get.LastName, Psswrd = get.Psswrd };
+		}
 
         // POST api/Progress
         [HttpPost]

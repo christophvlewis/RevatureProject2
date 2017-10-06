@@ -11,8 +11,9 @@ namespace DatatoLogic2.DataLogic
     {
 		private ChallengerDBContext context = new ChallengerDBContext();
 
-        // CREATE an Administrator
-        public override bool CreateUser(string Email, string Password, string FirstName, string LastName)
+
+		// CREATE an Administrator
+		public override bool CreateUser(string Email, string Password, string FirstName, string LastName)
         {
             try
             {

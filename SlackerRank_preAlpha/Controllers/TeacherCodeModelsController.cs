@@ -12,33 +12,21 @@ namespace SlackerRank_preAlpha.Controllers
 {
     public class TeacherCodeModelsController : Controller
     {
-        private readonly MyDbContext _context;
-
-        public TeacherCodeModelsController(MyDbContext context)
-        {
-            _context = context;
-        }
-
-        // GET: TeacherCodeModels
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.TeacherCode.ToListAsync());
-        }
+		// GET: TracherCodeModels/
+		public IActionResult Index()
+		{
+			return View(new TeacherCodeModel().GetListFromDatatabase());
+		}
 
         // GET: TeacherCodeModels/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var teacherCodeModel = await _context.TeacherCode
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (teacherCodeModel == null)
-            {
-                return NotFound();
-            }
+			var teacherCodeModel = new TeacherCodeModel().GetFromDatabase((int)id);
 
             return View(teacherCodeModel);
         }
@@ -54,13 +42,11 @@ namespace SlackerRank_preAlpha.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CodeIntro,CodeSolution,CodeExe,CodePath")] TeacherCodeModel teacherCodeModel)
+        public IActionResult Create([Bind("Id,CodeIntro,CodeSolution,CodeExe,CodePath")] TeacherCodeModel teacherCodeModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(teacherCodeModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+				teacherCodeModel.AddtoDatabase(teacherCodeModel);
             }
             return View(teacherCodeModel);
         }
@@ -73,7 +59,8 @@ namespace SlackerRank_preAlpha.Controllers
                 return NotFound();
             }
 
-            var teacherCodeModel = await _context.TeacherCode.SingleOrDefaultAsync(m => m.Id == id);
+			var teacherCodeModel = new TeacherCodeModel().GetFromDatabase((int)id);
+
             if (teacherCodeModel == null)
             {
                 return NotFound();
@@ -97,8 +84,9 @@ namespace SlackerRank_preAlpha.Controllers
             {
                 try
                 {
-                    _context.Update(teacherCodeModel);
-                    await _context.SaveChangesAsync();
+					var teachcode = new TeacherCodeModel().UpdatetoDatabase(teacherCodeModel);
+                    //_context.Update(teacherCodeModel);
+                    //await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +112,8 @@ namespace SlackerRank_preAlpha.Controllers
                 return NotFound();
             }
 
-            var teacherCodeModel = await _context.TeacherCode
-                .SingleOrDefaultAsync(m => m.Id == id);
+			var teacherCodeModel = new TeacherCodeModel().GetFromDatabase((int)id);
+
             if (teacherCodeModel == null)
             {
                 return NotFound();
@@ -139,15 +127,17 @@ namespace SlackerRank_preAlpha.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var teacherCodeModel = await _context.TeacherCode.SingleOrDefaultAsync(m => m.Id == id);
-            _context.TeacherCode.Remove(teacherCodeModel);
-            await _context.SaveChangesAsync();
+			new TeacherCodeModel().DeletefromDatabase(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool TeacherCodeModelExists(int id)
         {
-            return _context.TeacherCode.Any(e => e.Id == id);
+			var exist = new TeacherCodeModel().GetFromDatabase(id);
+
+			if (exist != null) { return true; }
+			else { return false; }
+
         }
     }
 }

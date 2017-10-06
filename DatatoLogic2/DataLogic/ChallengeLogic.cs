@@ -11,9 +11,9 @@ namespace DatatoLogic2.DataLogic
 	public class ChallengeLogic
     {
         private ChallengerDBContext context = new ChallengerDBContext();
-        
-        // CREATE a new Challenge
-        public bool CreateChallenge(string Objective, string Question, string Answer)
+
+		// CREATE a new Challenge
+		public bool CreateChallenge(string Objective, string Question, string Answer)
         {
             try
             {

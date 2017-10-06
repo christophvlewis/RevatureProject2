@@ -8,6 +8,9 @@ using SlackerRank_preAlpha.Models;
 using Microsoft.CodeAnalysis;
 using SlackerRank_preAlpha.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using Newtonsoft.Json;
+using SlackerRank_preAlpha.Converters;
 
 namespace SlackerRank_preAlpha.Controllers
 {
@@ -20,13 +23,20 @@ namespace SlackerRank_preAlpha.Controllers
             _context = context;
         }
 
-
+		/*
         public async Task<IActionResult> Index()
         {
-
+			//Nicks Code
             return View(await _context.TeacherCode.ToListAsync());
 
-        }
+        }*/
+
+		public IActionResult Index()
+		{
+			return View(new TeacherCodeModel().GetListFromDatatabase());
+		}
+
+
                    
         public IActionResult Solve(int id) {
 

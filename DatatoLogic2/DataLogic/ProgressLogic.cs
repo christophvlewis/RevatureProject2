@@ -10,10 +10,10 @@ namespace DatatoLogic2.DataLogic
     
     public class ProgressLogic
     {
-        private ChallengerDBContext context = new ChallengerDBContext();
+		private ChallengerDBContext context = new ChallengerDBContext();
 
-        // CREATE - Adding status of user attempts
-        public bool AddStatus(string Email, int Correct, int Wrong, int QuestionNumber)
+		// CREATE - Adding status of user attempts
+		public bool AddStatus(string Email, int Correct, int Wrong, int QuestionNumber)
         {
             try
             {
