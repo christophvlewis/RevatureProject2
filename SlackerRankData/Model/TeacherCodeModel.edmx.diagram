@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26dd0718e3bb4e3fbc9ea975f2935538" Name="Diagram1">
+        <EntityTypeShape EntityType="ChallengerDBModel.Administrator" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChallengerDBModel.Challenge" Width="1.5" PointX="8.375" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChallengerDBModel.NonAdmin" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChallengerDBModel.Progress" Width="1.5" PointX="5.375" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChallengerDBModel.sysdiagram" Width="1.5" PointX="10.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChallengerDBModel.UserCred" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="ChallengerDBModel.FK_Administrator_Email" ManuallyRouted="false" />
+        <AssociationConnector Association="ChallengerDBModel.FK_Progress_QuestionNumber" ManuallyRouted="false" />
+        <AssociationConnector Association="ChallengerDBModel.FK_NonAdmin_Email" ManuallyRouted="false" />
+        <AssociationConnector Association="ChallengerDBModel.FK_Progress_Email1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
