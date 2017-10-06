@@ -9,10 +9,11 @@ namespace CompilerConsole.test
 {
 	public class test
 	{
-		//[Fact]
-		//public static void testtest()
-		//{
-		//	Assert.True(true);
-		//}
+		[Fact]
+		public static void testtest()
+		{
+			Assert.True(true);
+			Assert.False(false);
+		}
 	}
 }
