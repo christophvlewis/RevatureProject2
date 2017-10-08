@@ -24,7 +24,9 @@ namespace DatatoLogic2
 			//var builder = new ConfigurationBuilder().AddXmlFile(@"C:\Users\Chris\Source\Repos\RevatureProject2\RevatureProject2\SlackerRankData\App.config");
 			//Configuration = builder.Build();
 
-			var builder = new ConfigurationBuilder().AddJsonFile(@"C:\inetpub\wwwroot\RevatureProject2\appsettings.json");
+			//var builder = new ConfigurationBuilder().AddJsonFile(@"C:\Users\Chris\Source\Repos\RevatureProject2\RevatureProject2\DatatoLogic2\appsettings.json");
+
+			var builder = new ConfigurationBuilder().AddJsonFile(@"C:\inetpub\wwwroot\DatatoLogic2\appsettings.json");
 			builder.AddEnvironmentVariables();
 			Configuration = builder.Build();
 
