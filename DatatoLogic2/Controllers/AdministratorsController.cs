@@ -74,5 +74,12 @@ namespace DataToLogic2.Controllers
 			// Code when connected : delete Administrator from database
 			var delete = new AdministratorLogic().DeleteUser(email);
         }
+
+		[Route("testingstuff")]
+		public int testingstuff()
+		{
+			return 1;
+		}
+
     }
 }
