@@ -38,7 +38,7 @@ namespace SlackerRank_preAlpha.Models
 			{
 				var r = res.Content.ReadAsStringAsync().Result;
 				var p = JsonConvert.DeserializeObject<ChallengetoTeacherStudentCode>(r);
-				teachcode = p.ToTeacherCodeModel("myTeacher.exe", @"C:\Users\Chris\Desktop\myTeacher.exe");
+				teachcode = p.ToTeacherCodeModel("myTeacher.exe", @"C:\myTeacher.exe");
 			}
 			else
 				return null;
@@ -63,7 +63,7 @@ namespace SlackerRank_preAlpha.Models
 
 				foreach (var teach in p)
 				{
-					list.Add(teach.ToTeacherCodeModel("exestuff", "pathstuff"));
+					list.Add(teach.ToTeacherCodeModel("myTeacher.exe", @"C:\myTeacher.exe"));
 				}
 			}
 			return list;
@@ -106,7 +106,7 @@ namespace SlackerRank_preAlpha.Models
 			var ri = res.Content.ReadAsStringAsync().Result;
 			var p = JsonConvert.DeserializeObject<ChallengetoTeacherStudentCode>(ri);
 
-			return p.ToTeacherCodeModel("exestuff", "pathstuff");
+			return p.ToTeacherCodeModel("myTeacher.exe", @"C:\myTeacher.exe");
 		}
 		
 
