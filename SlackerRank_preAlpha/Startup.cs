@@ -23,10 +23,10 @@ namespace SlackerRank_preAlpha
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string myDefaultConnection = Configuration.GetConnectionString("DefaultConnection");
+            string myDefaultConnection = Configuration.GetConnectionString("ChallengerDBEntities");
 
             services.AddDbContext<MyDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("ChallengerDBEntities")));
             services.AddMvc();
         }
 

@@ -26,12 +26,12 @@ namespace DatatoLogic2
 
 			//var builder = new ConfigurationBuilder().AddJsonFile(@"C:\Users\Chris\Source\Repos\RevatureProject2\RevatureProject2\DatatoLogic2\appsettings.json");
 
-			var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+			//var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 
 			//var builder = new ConfigurationBuilder().AddJsonFile(@"C:\Program Files (x86)\Jenkins\workspace\RevatureProject2\DatatoLogic2\appsettings.json");
 
-			builder.AddEnvironmentVariables();
-			Configuration = builder.Build();
+			//builder.AddEnvironmentVariables();
+			//Configuration = builder.Build();
 
         }
 
