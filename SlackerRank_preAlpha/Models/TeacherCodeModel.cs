@@ -50,7 +50,7 @@ namespace SlackerRank_preAlpha.Models
 			//var res = client.GetAsync("http://localhost:63040/api/Challenges").GetAwaiter().GetResult();
 			//var res = client.GetAsync("http://localhost:DatatoLogic2/api/Challenges").GetAwaiter().GetResult();
 
-			//var res = client.GetAsync(serverhttp + "api/Challenges").GetAwaiter().GetResult();
+			var res = client.GetAsync(serverhttp + "api/Challenges").GetAwaiter().GetResult();
 
 
 			if (res.IsSuccessStatusCode)
