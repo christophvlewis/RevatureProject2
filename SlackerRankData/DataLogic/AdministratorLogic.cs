@@ -48,14 +48,15 @@ namespace SlackerRankData.DataLogic
         // READ - Get list of all Administrators
         public List<UserCred> ListOfAdministrators()
         {
-            List<UserCred> AdminList = 
+            List<UserCred> AdminList =
                (List<UserCred>)from a in context.Administrators
                                join u in context.UserCreds on a.Email equals u.Email
                                select new
                                {
                                    Email = u.Email,
                                    FirstName = u.FirstName,
-                                   LastName = u.LastName
+                                   LastName = u.LastName,
+                                   test = a.Email
                                };
             return AdminList;
         } // End ListOfAdministrators
