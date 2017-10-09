@@ -59,7 +59,6 @@ namespace SlackerRank_preAlpha.Controllers
 
 			var teachcode = new TeacherCodeModel().GetFromDatabase(toIntId);
 
-			return Content(toIntId.ToString());
 			/*
 			var myTeacherCode = _context.TeacherCode
              .SingleOrDefault(t => t.Id == toIntId); //grabs teacher row where id matches
