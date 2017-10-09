@@ -23,7 +23,9 @@ namespace SlackerRank_preAlpha.Models
 		{
 			var teachcode = new TeacherCodeModel();
 			var client = new HttpClient();
-			var res = client.GetAsync("http://localhost:63040/api/Challenges/" + id).GetAwaiter().GetResult();
+			//var res = client.GetAsync("http://localhost:63040/api/Challenges/" + id).GetAwaiter().GetResult();
+			var res = client.GetAsync("http://localhost/DatatoLogic2/api/Challenges/" + id).GetAwaiter().GetResult();
+
 			if (res.IsSuccessStatusCode)
 			{
 				var r = res.Content.ReadAsStringAsync().Result;
@@ -40,7 +42,9 @@ namespace SlackerRank_preAlpha.Models
 		{
 			var list = new List<TeacherCodeModel>();
 			var client = new HttpClient();
-			var res = client.GetAsync("http://localhost:63040/api/Challenges").GetAwaiter().GetResult();
+			//var res = client.GetAsync("http://localhost:63040/api/Challenges").GetAwaiter().GetResult();
+			var res = client.GetAsync("http://localhost:DatatoLogic2/api/Challenges").GetAwaiter().GetResult();
+
 			if (res.IsSuccessStatusCode)
 			{
 				var r = res.Content.ReadAsStringAsync().Result;
