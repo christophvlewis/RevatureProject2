@@ -79,7 +79,9 @@ namespace SlackerRank_preAlpha.Models
 
 			var stringstuff = new StringContent(r, Encoding.UTF8, "application/json");
 
-			var res = client.PostAsync("http://localhost:63040/api/Challenges", stringstuff).GetAwaiter().GetResult();
+			//var res = client.PostAsync("http://localhost:63040/api/Challenges", stringstuff).GetAwaiter().GetResult();
+			var res = client.PostAsync(serverhttp + "/api/Challenges", stringstuff).GetAwaiter().GetResult();
+
 		}
 
 		public void DeletefromDatabase(int id)
