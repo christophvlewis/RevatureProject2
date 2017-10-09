@@ -19,12 +19,17 @@ namespace SlackerRank_preAlpha.Models
         public string CodePath { set; get; }
 		//public List<string> CodeInputs { set; get; } --> implement model that creates a listing of codeinputs, and then map to this model.
 
+		string serverhttp = "http://ec2-54-174-148-114.compute-1.amazonaws.com/";
+
 		public TeacherCodeModel GetFromDatabase(int id)
 		{
 			var teachcode = new TeacherCodeModel();
 			var client = new HttpClient();
 			//var res = client.GetAsync("http://localhost:63040/api/Challenges/" + id).GetAwaiter().GetResult();
-			var res = client.GetAsync("http://localhost/DatatoLogic2/api/Challenges/" + id).GetAwaiter().GetResult();
+			//var res = client.GetAsync("http://localhost/DatatoLogic2/api/Challenges/" + id).GetAwaiter().GetResult();
+
+			var res = client.GetAsync(serverhttp + "api/Challenges/"+ id).GetAwaiter().GetResult();
+
 
 			if (res.IsSuccessStatusCode)
 			{
@@ -43,7 +48,10 @@ namespace SlackerRank_preAlpha.Models
 			var list = new List<TeacherCodeModel>();
 			var client = new HttpClient();
 			//var res = client.GetAsync("http://localhost:63040/api/Challenges").GetAwaiter().GetResult();
-			var res = client.GetAsync("http://localhost:DatatoLogic2/api/Challenges").GetAwaiter().GetResult();
+			//var res = client.GetAsync("http://localhost:DatatoLogic2/api/Challenges").GetAwaiter().GetResult();
+
+			var res = client.GetAsync(serverhttp + "api/Challenges").GetAwaiter().GetResult();
+
 
 			if (res.IsSuccessStatusCode)
 			{
