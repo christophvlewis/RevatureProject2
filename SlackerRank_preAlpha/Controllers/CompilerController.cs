@@ -59,7 +59,7 @@ namespace SlackerRank_preAlpha.Controllers
 
 			var teachcode = new TeacherCodeModel().GetFromDatabase(toIntId);
 
-
+			return Content(toIntId.ToString());
 			/*
 			var myTeacherCode = _context.TeacherCode
              .SingleOrDefault(t => t.Id == toIntId); //grabs teacher row where id matches
@@ -72,9 +72,9 @@ namespace SlackerRank_preAlpha.Controllers
             List<string> testList = new List<string> {"1","2" };
             string testStudentCode = "using System;public class Program { static void Main() { int myInput = 1000; int mySum = 0; for (int i = myInput - 1; i > 0; i--) { if (i % 3 == 0 || i % 5 == 0) mySum = mySum + i; } Console.WriteLine(mySum); } }";
             string testTeacherCode = "using System;public class sum{public static void Main(){int sum = 0;for (int i = 1; i <= 999; i++){if (i % 3 == 0 || i % 5 == 0) { sum += i; }}Console.WriteLine(sum);}}";
-			//Tester myTester = new Tester(@"C:\myTeacher.exe", "myTeacher.exe",testTeacherCode, @"C:\myStudent.exe", "myStudent.exe",testStudentCode, testList);
+			Tester myTester = new Tester(@"C:\myTeacher.exe", "myTeacher.exe",testTeacherCode, @"C:\myStudent.exe", "myStudent.exe",testStudentCode, testList);
 			//Tester myTester = new Tester(myTeacherCode.CodePath + myTeacherCode.CodeExe, myTeacherCode.CodeExe, myTeacherCode.CodeSolution, @"C:\myStudent.exe", "myStudent.exe", model.inputCode, testList);
-			Tester myTester = new Tester(teachcode.CodePath + teachcode.CodeExe, teachcode.CodeExe, teachcode.CodeSolution, @"C:\myStudent.exe", "myStudent.exe", model.inputCode, testList);
+			//Tester myTester = new Tester(teachcode.CodePath + teachcode.CodeExe, teachcode.CodeExe, teachcode.CodeSolution, @"C:\myStudent.exe", "myStudent.exe", model.inputCode, testList);
 
 
 			// return Content(model.inputCode);
