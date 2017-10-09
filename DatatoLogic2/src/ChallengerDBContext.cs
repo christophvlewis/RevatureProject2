@@ -19,8 +19,8 @@ namespace DatatoLogic2.src
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-				//optionsBuilder.UseSqlServer(@"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;user id=miahtampa;password=Pass1234");
-				optionsBuilder.UseSqlServer(Startup.ConnectionString);
+				optionsBuilder.UseSqlServer(@"data source=sqlmiah.database.windows.net;initial catalog=ChallengerDB;user id=miahtampa;password=Pass1234");
+				//optionsBuilder.UseSqlServer(Startup.ConnectionString);
 				
 
             }
