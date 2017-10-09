@@ -88,8 +88,9 @@ namespace SlackerRank_preAlpha.Models
 		{
 			var client = new HttpClient();
 
-			var res = client.DeleteAsync("http://localhost:63040/api/Challenges/" + id).GetAwaiter().GetResult();
-		}
+			//var res = client.DeleteAsync("http://localhost:63040/api/Challenges/" + id).GetAwaiter().GetResult();
+            var res = client.DeleteAsync(serverhttp + "/api/Challenges/" + id).GetAwaiter().GetResult();
+        }
 
 		public TeacherCodeModel UpdatetoDatabase(TeacherCodeModel tc)
 		{
@@ -102,10 +103,11 @@ namespace SlackerRank_preAlpha.Models
 
 			var stringstuff = new StringContent(r, Encoding.UTF8, "application/json");
 
-			var res = client.PutAsync("http://localhost:63040/api/Challenges/" + convert.QuestionNumber, stringstuff).GetAwaiter().GetResult();
+			//var res = client.PutAsync("http://localhost:63040/api/Challenges/" + convert.QuestionNumber, stringstuff).GetAwaiter().GetResult();
+            var res = client.PutAsync(serverhttp + "api/Challenges/" + convert.QuestionNumber, stringstuff).GetAwaiter().GetResult();
 
 
-			var ri = res.Content.ReadAsStringAsync().Result;
+            var ri = res.Content.ReadAsStringAsync().Result;
 			var p = JsonConvert.DeserializeObject<ChallengetoTeacherStudentCode>(ri);
 
 			return p.ToTeacherCodeModel("myTeacher.exe", @"C:\myTeacher.exe");
