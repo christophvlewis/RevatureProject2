@@ -40,7 +40,7 @@
                         @Html.DisplayFor(modelItem => item.CodePath)
                     </td>
                     <td>
-                        <a asp-action="Index" asp-controller="Compiler" asp>Solve</a>
+                        <a asp-action="Index" asp-controller="Compiler" asp-route-id="@item.Id">Solve</a>
                         <a asp-action="Edit" asp-controller="TeacherCodeModels" asp-route-id="@item.Id">Edit</a> |
                         <a asp-action="Details" asp-controller="TeacherCodeModels" asp-route-id="@item.Id">Details</a> |
                         <a asp-action="Delete" asp-controller="TeacherCodeModels" asp-route-id="@item.Id">Delete</a>
