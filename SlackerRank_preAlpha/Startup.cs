@@ -49,7 +49,7 @@ namespace SlackerRank_preAlpha
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=ProblemList}/{action=Index}/{id?}");
+                    template: "{controller=TeacherCodeModels}/{action=Index}/{id?}");
             });
         }
     }

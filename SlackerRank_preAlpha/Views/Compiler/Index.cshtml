@@ -10,20 +10,56 @@
 
     
 <style>
+    #theConsole {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        width: 150px;
+        height: 450px;
+        box-shadow: 0 0 5px 3px;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+    }
     textarea {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
         width: 900px;
         height: 450px;
+        box-shadow: 0 0 5px 3px;
+        border-radius: 10px;
     }
-    #testStyle {
- 
-    width:900px;
-    height:450px;
-    
+    .btn {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        box-shadow: 0 0 5px 3px;
+        border-radius: 10px;
     }
-</style>
-<h1>Compiler</h1>
 
-@Html.BeginForm("index", "Compiler", FormMethod.Post)   {
+    #headingTitle {
+       
+        text-shadow: 0 0 5px 3px black;
+        
+        
+    }
+
+    
+    
+    #testStyle { 
+        width:900px;
+        height:450px;    
+    }
+
+</style>
+<h1 id="headingTitle">Compiler</h1>
+
+@using (Html.BeginForm("index", "Compiler", FormMethod.Post)) { 
+
+
+
 <div class="col-md-6" id="testStyle">
     <div class="row">
         
@@ -38,14 +74,14 @@
         
         @{try
             {
-                
-        <div class="col-md-2"> @Html.DisplayFor(model => model.outputCode)</div>
-                
+
+        <div class="col-md-2"><textarea id="theConsole">@ViewBag.Message @Html.DisplayFor(model => model.outputCode)</textarea> </div>
+
             }
             catch
             {
-                <div class="col-md-2"> @Html.DisplayText("...")</div>
-            }
+                <div id="theConsole" class="col-md-2"> @Html.DisplayText("...")</div>
+                }
         }
         <div class="col-md-4"> @Html.TextAreaFor(model => model.inputCode)</div>
     </div>
@@ -56,15 +92,15 @@
     
 
     <div class="row">
-        <p>@ViewBag.Message</p>
+        
     </div>
 
     <div class="row">
         <div class="col-md-6"><button class="btn btn-block" type="submit">Compile!</button> </div>
     </div>
 </div>
+    </div>
 
 
+            }
 
-
-}

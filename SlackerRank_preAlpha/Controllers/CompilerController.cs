@@ -70,8 +70,8 @@ namespace SlackerRank_preAlpha.Controllers
             
             
             List<string> testList = new List<string> {"1","2" };
-            string testStudentCode = "using System;public class Program { static void Main() { int myInput = 1000; int mySum = 0; for (int i = myInput - 1; i > 0; i--) { if (i % 3 == 0 || i % 5 == 0) mySum = mySum + i; } Console.WriteLine(mySum); } }";
-            string testTeacherCode = "using System;public class sum{public static void Main(){int sum = 0;for (int i = 1; i <= 999; i++){if (i % 3 == 0 || i % 5 == 0) { sum += i; }}Console.WriteLine(sum);}}";
+           // string testStudentCode = "using System;public class Program { static void Main() { int myInput = 1000; int mySum = 0; for (int i = myInput - 1; i > 0; i--) { if (i % 3 == 0 || i % 5 == 0) mySum = mySum + i; } Console.WriteLine(mySum); } }";
+            //string testTeacherCode = "using System;public class sum{public static void Main(){int sum = 0;for (int i = 1; i <= 999; i++){if (i % 3 == 0 || i % 5 == 0) { sum += i; }}Console.WriteLine(sum);}}";
 			//Tester myTester = new Tester(@"C:\inetpub\myTeacher.exe", "myTeacher.exe",testTeacherCode, @"C:\inetpub\myStudent.exe", "myStudent.exe",testStudentCode, testList);
 			//Tester myTester = new Tester(myTeacherCode.CodePath + myTeacherCode.CodeExe, myTeacherCode.CodeExe, myTeacherCode.CodeSolution, @"C:\myStudent.exe", "myStudent.exe", model.inputCode, testList);
 			Tester myTester = new Tester(teachcode.CodePath + teachcode.CodeExe, teachcode.CodeExe, teachcode.CodeSolution, @"C:\inetpub\myStudent.exe", "myStudent.exe", model.inputCode, testList);
@@ -80,7 +80,12 @@ namespace SlackerRank_preAlpha.Controllers
 			// return Content(model.inputCode);
 			//return Content(myTeacherCode.CodeSolution);
 			bool myTestResult = myTester.TestIt();
-            return Content(myTestResult.ToString());
+            if (myTestResult == true) ViewBag.Message = "Success!";
+            else ViewBag.Message = "Failure!";
+            //ViewBag.Message = myTestResult.ToString();
+            TempData["myProblem"] = TempData["myProblem"];
+            return View();
+            //return Content(myTestResult.ToString());
 
             //sending inputs into the prog.
             //testRunner.CompileIt

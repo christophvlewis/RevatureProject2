@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.CodePath)
             </td>
             <td>
-                <a asp-action="SOLVE" asp-route-id="@item.Id">Solve</a> |
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Index" asp-controller="Compiler" asp-route-id="@item.Id">Solve</a>
+                <a asp-action="Edit" asp-controller="TeacherCodeModels" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-controller="TeacherCodeModels" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-controller="TeacherCodeModels" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

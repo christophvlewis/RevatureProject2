@@ -160,7 +160,7 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
             }
             catch(Exception ex)
             {
-                throw ex;
+                //throw ex;
                 myOutput.Add(ex.ToString());
                 return myOutput;
             }
