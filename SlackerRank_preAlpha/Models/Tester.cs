@@ -69,10 +69,28 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
 
             }
 
-            else { myOutputs = myStudent.RunItResult; }
+            //else { myOutputs = myStudent.RunItResult; }
 
             List<string> myTeacherResult = myTeacher.RunIt(teachersPath, "");
             List<string> myStudentResult = myStudent.RunIt(studentsPath, "");
+
+
+            myOutputs.Add("Expected Result: \n");
+
+            foreach (string result in myTeacherResult) {
+                if (result != null)
+                    this.myOutputs.Add(result + " \n");
+            }
+
+            myOutputs.Add("Your Result: \n");
+
+            foreach (string result in myStudentResult) {
+
+              
+               if(result != null)
+                this.myOutputs.Add(result+" \n");
+
+            }
 
             if (myStudentResult[0] == myTeacherResult[0]) return true;
 
