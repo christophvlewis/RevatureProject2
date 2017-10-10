@@ -29,13 +29,14 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
         {
             this.myOutputs = new List<string> { };
             this.myInputs = new List<string> { };
-            this.allInputs = new List<string> { };
+            //this.allInputs = new List<string> { };
             this.teachersCode = teachersCode;
             this.teachersPath = teachersPath;
             this.teachersExe = teachersExe;
             this.studentsCode = studentsCode;
             this.studentsExe = studentsExe;
             this.studentsPath = studentsPath;
+            this.allInputs = allInputs;
             
 
 
@@ -54,8 +55,8 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
             List<Diagnostic> listoferrors = myStudent.CompileIt(studentsPath, studentsExe, studentsCode);
             //Exception ex = new Exception();
 
-            this.myOutputs = new List<string> { };
-            if (listoferrors != null)
+           
+            if (listoferrors.Count != 0)
             {
 
                 foreach (Diagnostic myDiagnostic in listoferrors)

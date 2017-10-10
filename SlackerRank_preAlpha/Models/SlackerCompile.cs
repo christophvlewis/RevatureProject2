@@ -46,6 +46,18 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
         public string MyExe { set; get; }
         public string MyArgs { set; get; }
 
+
+        public SlackerCompile() {
+
+            this.RunItResult = RunItResult;
+            this.CompileItResult = CompileItResult;
+            this.MyCode = MyCode;
+            this.MyPath = MyPath;
+            this.MyExe = MyExe;
+            this.MyArgs = MyArgs;
+
+        }
+
         private static readonly IEnumerable<string> DefaultNamespaces =
             new[]
             {
