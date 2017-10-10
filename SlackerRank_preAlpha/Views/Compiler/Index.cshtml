@@ -54,6 +54,10 @@
     }
 
 </style>
+
+
+
+
 <h1 id="headingTitle">Compiler</h1>
 
 @using (Html.BeginForm("index", "Compiler", FormMethod.Post)) { 
@@ -75,7 +79,20 @@
         @{try
             {
 
-        <div class="col-md-2"><textarea id="theConsole">@ViewBag.Message @Html.DisplayFor(model => model.outputCode)</textarea> </div>
+        <div class="col-md-2"><textarea id="theConsole"> @ViewBag.Message
+           
+            @foreach (var result in ViewBag.myOutputs)
+            { 
+                @result
+
+            }
+
+                
+
+                                              
+
+                                                  
+            </textarea> </div>
 
             }
             catch

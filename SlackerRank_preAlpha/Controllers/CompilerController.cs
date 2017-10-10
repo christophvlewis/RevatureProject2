@@ -35,8 +35,9 @@ namespace SlackerRank_preAlpha.Controllers
              
 
             TempData["myProblem"] = id;
-          
-
+            List<string> myEmptyList = new List<string> { };
+            ViewBag.myOutputs = myEmptyList;
+           
             return View();
         }
         [HttpPost]
@@ -80,11 +81,22 @@ namespace SlackerRank_preAlpha.Controllers
 			// return Content(model.inputCode);
 			//return Content(myTeacherCode.CodeSolution);
 			bool myTestResult = myTester.TestIt();
+
             if (myTestResult == true) ViewBag.Message = "Success!";
             else ViewBag.Message = "Failure!";
             //ViewBag.Message = myTestResult.ToString();
             TempData["myProblem"] = TempData["myProblem"];
-            return View();
+            CompilerModel myModel = new CompilerModel();
+
+            if (myTester.myOutputs != null)
+                ViewBag.myOutputs = myTester.myOutputs;
+            else
+                ViewBag.myOutputs = new List<string> { };
+
+            return View(myModel);
+
+            /*
+            
             //return Content(myTestResult.ToString());
 
             //sending inputs into the prog.
@@ -92,6 +104,7 @@ namespace SlackerRank_preAlpha.Controllers
             //testRunner.RunIt
 
             //take try catch code here, put in compiler class.
+            
             SlackerCompile myRunner = new SlackerCompile();
             myRunner.MyExe = "myGuy.exe";
             myRunner.MyPath = @"C:\"+myRunner.MyExe;
@@ -154,7 +167,7 @@ namespace SlackerRank_preAlpha.Controllers
 
             
             return View();
-
+            */
         }
     }
 }

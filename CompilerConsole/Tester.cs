@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,8 +47,22 @@ namespace SlackerRankCompilerClasses
             myTeacher.CompileIt(teachersPath, teachersExe, teachersCode);
             myStudent.CompileIt(studentsPath, studentsExe, studentsCode);
             Exception ex = new Exception();
-            
-            if (myStudent.CompileItResult != null) { throw ex; }
+
+
+            if (myStudent.CompileItResult != null)
+            {
+
+                foreach (Diagnostic myDiagnostic in myStudent.CompileItResult)
+                {
+                    myOutputs.Add(myDiagnostic.ToString());
+
+                }
+
+                return false;
+
+            }
+
+            else { myOutputs = myStudent.RunItResult; }
 
             List<string> myTeacherResult = myTeacher.RunIt(teachersPath, "");
             List<string> myStudentResult = myStudent.RunIt(studentsPath, "");

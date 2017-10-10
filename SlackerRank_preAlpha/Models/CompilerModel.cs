@@ -9,6 +9,6 @@ namespace SlackerRank_preAlpha.Models
     {
 
         public string inputCode { get; set; }
-        public string outputCode { get; set; }  //convert to iteratable list
+        public List<string> outputCode { get; set; }  //convert to iteratable list
     }
 }

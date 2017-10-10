@@ -37,7 +37,7 @@ using System.Diagnostics;
 //class SlackerRun : SlackerRankAPI.
 namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
 {
-   public class SlackerCompile
+    public class SlackerCompile
     {
         public List<string> RunItResult { set; get; }
         public List<Diagnostic> CompileItResult { set; get; }
@@ -72,14 +72,14 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
         private static readonly CSharpCompilationOptions DefaultCompilationOptions =
             new CSharpCompilationOptions(OutputKind.ConsoleApplication)
                     .WithOverflowChecks(true).WithOptimizationLevel(OptimizationLevel.Release);
-                   // .WithUsings(DefaultNamespaces);
+        // .WithUsings(DefaultNamespaces);
 
         public static SyntaxTree Parse(string text, string filename = "", CSharpParseOptions options = null)
         {
             if (text == null) text = "";
-                var stringText = SourceText.From(text, Encoding.UTF8);
-                return SyntaxFactory.ParseSyntaxTree(stringText, options);
-            
+            var stringText = SourceText.From(text, Encoding.UTF8);
+            return SyntaxFactory.ParseSyntaxTree(stringText, options);
+
         }
 
         public List<Diagnostic> CompileIt(string MyPath, string MyExe, string MyCode)
@@ -88,8 +88,8 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
             //var fileToCompile = @"C:\Users\Chris\Desktop\C#\Program.cs";  // Directory for Program.cs (input code)
             //var source = File.ReadAllText(fileToCompile); // take string from input textbox, assign to this variable // where the file gets converted to string.
 
-            
-            
+
+
             var parsedSyntaxTree = Parse(MyCode, "", CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp5));
 
             var compilation
@@ -153,12 +153,12 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
                 //p.OutputDataReceived += p_OutputDataReceived;
                 //p.BeginOutputReadLine();
 
-                               
+
 
                 p.WaitForExit();
                 return myOutput;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //throw ex;
                 myOutput.Add(ex.ToString());
@@ -170,43 +170,6 @@ namespace SlackerRank_preAlpha.SlackerRankCompilerClasses
 
         }
 
-
-
-            /*       
-         var fileToCompile = @"C:\Users\Chris\Desktop\C#\Program.cs";  // Directory for Program.cs (input code)
-         var source = File.ReadAllText(fileToCompile); // take string from input textbox, assign to this variable // where the file gets converted to string.
-         var parsedSyntaxTree = Parse(source, "", CSharpParseOptions.Default.WithLanguageVersion(LanguageVersion.CSharp5));
-
-         var compilation
-             = CSharpCompilation.Create("Test.exe", new SyntaxTree[] { parsedSyntaxTree }, DefaultReferences, DefaultCompilationOptions);
-         try
-         {
-             var result = compilation.Emit(@"C:\Users\Chris\Desktop\C#\Test.exe");  //output file for code input 
-
-             Console.WriteLine(result.Success ? "Success!!" : "Failed");
-         }
-         catch (Exception ex)
-         {
-             Console.WriteLine(ex);
-         }
-         Console.Read();   \
-         */
-
-           /*
-
-            SlackerCompile myRunner = new SlackerCompile();
-            myRunner.MyExe = "myGuy5.exe";
-            myRunner.MyCode = "public class MyClass{ static void Main(string[] args){System.Console.WriteLine(\"Hello World\");  System.Console.WriteLine(\"testtesttest\"); }}";
-            Console.WriteLine("Starting compilation");
-            
-            //myRunner.CompileItResult = myRunner.CompileIt();
-            List<string> myOutput = myRunner.RunIt("C:\\" + myRunner.MyExe, "");//TODO: Have it use current working directory
-            myRunner.RunItResult = myOutput;
-              //Sets "myRunner" class instance property RunItResult to result of myRunner.RunIt return value.
-           
-           */
-            //foreach (string line in myOutput) Console.WriteLine(line);   //DEBUG
-            //Now a gotta build a gotdam api. --> Use interfaces. Make a "core" project, and then have the core project reference both the console proj and the webapp proj. Main exists in this core proj.
-
+       
     }
 }
